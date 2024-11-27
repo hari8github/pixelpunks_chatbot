@@ -4,6 +4,7 @@ from PIL import Image
 import io
 import concurrent.futures
 import logging
+import os
 
 app = Flask(__name__)
 
@@ -11,7 +12,7 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
 # Configure the Gemini API with your API key
-genai.configure(api_key="AIzaSyCESdMDwpTv1csDIaoPGpoVkLPxkl8smSU")
+genai.configure(api_key=os.getenv('GENAI_API_KEY'))
 
 # Initialize the Gemini models
 flash_model = genai.GenerativeModel('gemini-1.5-flash')
